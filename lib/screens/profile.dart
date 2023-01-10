@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'login_screen.dart';
 import '../widgets/info_card.dart';
+import '../screens/cam_masks_filters.dart';
+import '../screens//CameraView.dart';
+import 'package:image_picker/image_picker.dart';
 
 const url = "meshivanshsingh.me";
 const email = "me.shivansh007@gmail.com";
@@ -66,7 +69,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (builder) => LoginScreen()
+                        builder: (builder) => CameraMasksFilters()
                     )
                 );
               }),

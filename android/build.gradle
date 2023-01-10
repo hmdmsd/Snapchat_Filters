@@ -16,6 +16,10 @@ allprojects {
     repositories {
         google()
         mavenCentral()
+        maven {
+            // [required] camera_deep_ar
+            url "${project(':camera_deep_ar').projectDir}/libs"
+        }
     }
 }
 
