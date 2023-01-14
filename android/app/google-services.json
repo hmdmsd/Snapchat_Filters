@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "223157317854",
+    "project_id": "snapchat-filters-a7c68",
+    "storage_bucket": "snapchat-filters-a7c68.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:223157317854:android:e519028ab830f6b6ca124f",
+        "android_client_info": {
+          "package_name": "com.snapchatfilters.snapchat_filters"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "223157317854-f1vvu91o8890koft3no5r6onv9gnjc4b.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.snapchatfilters.snapchat_filters",
+            "certificate_hash": "163d8a4bd64dff24c9b32c7448a54b5fd5502c98"
+          }
+        },
+        {
+          "client_id": "223157317854-3nsjat2tb30l3vuj6n17u3mclfh400cu.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyApqEKli3JKvbvjFZn2a1PLMar_TYz-Pjo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "223157317854-3nsjat2tb30l3vuj6n17u3mclfh400cu.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
