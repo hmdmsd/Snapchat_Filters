@@ -20,7 +20,7 @@ plugins used in this app:
     animagie_image_ editor: ^0.0.1 // image editor
     gallery_saver: ^2.3.2  // save images to gallery
 }
-configuraions :{
+ configuraions :{
 compileSdkVersion 33
 minSdkVersion 23
 targetSdkVersion 29
