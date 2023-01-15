@@ -20,7 +20,7 @@ publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 version: 1.0.0+1
 
 environment:
-  sdk: '>=2.18.6 <3.0.0'
+  sdk: '>=2.18.5 <3.0.0'
 
 # Dependencies specify other packages that your package needs in order to work.
 # To automatically upgrade your package dependencies to the latest versions
@@ -43,9 +43,17 @@ dependencies:
       url: https://github.com/KalanaPerera/FlutterDeepAR
   avatar_view: ^1.0.1
   video_player: ^2.4.9
+
   path_provider: ^2.0.5
   path:
   image_picker: ^0.8.6
+  share_plus: ^6.3.0
+ # stories_editor:
+   # git:
+     # url: https://github.com/Hassen-Elmahrouk/stories_editor
+    #  ref: main
+  animagie_image_editor: ^0.0.1
+  gallery_saver: ^2.3.2
   #------------------
 
 dev_dependencies:
@@ -63,7 +71,7 @@ dev_dependencies:
 flutter_icons:
   android: "launcher_icon"
   ios: true
-  image_path: "assets/sc.jpg"
+  image_path: "/assets/sc.jpg"
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
