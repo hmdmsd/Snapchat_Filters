@@ -1,3 +1,4 @@
+import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'login_screen.dart';
@@ -5,16 +6,14 @@ import '../widgets/info_card.dart';
 import '../screens/cam_masks_filters.dart';
 import '../screens//CameraView.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:provider/provider.dart';
-import 'package:share_plus/share_plus.dart';
-import 'package:stories_editor/stories_editor.dart';
+import 'package:animagie_image_editor/bemeli_image_editor.dart';
+
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({Key? key}) : super(key: key);
 
   @override
   _ProfileScreenState createState() => _ProfileScreenState();
 }
-
 class _ProfileScreenState extends State<ProfileScreen> {
   @override
   Widget build(BuildContext context) {
@@ -70,17 +69,43 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     )
                 );
               }),
+              //select image from gallery
               InfoCard(text: "Uplaod image", icon: Icons.photo_library, onPressed: () async {
-                Navigator.push(context, MaterialPageRoute(builder: (context) => StoriesEditor(
-                  giphyKey: 'yxpcbXSkAgeR0GHEsdghEc9S7LjmXE1i',
-                  onDone: (uri){
-                    debugPrint(uri);
-                    Share.shareFiles([uri]);
-                  },
-                ))
+                final ima = await ImagePicker().pickImage(source: ImageSource.gallery);
+                if(ima!=null){
+                  //if nothing is selected stay on yhe same page
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                      builder: (context) => ProfileScreen()));
+                }
+                else{
+                  //go to Image editor
+
+                var editedImage = await Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => ImageEditor(
+                        image: File(ima!.path) //fromRawPath(ima!.path),
+                    ),
+                  ),
                 );
 
-              }),
+                // replace with edited image
+                if (editedImage != null) {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (builder) =>
+                              CameraViewPage(
+                                path: editedImage!.path
+                                ,
+                              )));
+                  setState(() {});
+
+                }
+              }}),
+              //logout button
               ElevatedButton(
                 child: Text("Logout"),
                 onPressed: () {

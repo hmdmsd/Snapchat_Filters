@@ -1,7 +1,9 @@
 import 'dart:io';
-
 import 'package:flutter/material.dart';
-import 'package:video_player/video_player.dart';
+import 'package:video_player/video_player.dart';//plugin for playing videos
+import '/screens/profile.dart';
+import 'package:share_plus/share_plus.dart';
+import 'package:gallery_saver/gallery_saver.dart';
 
 class VideoViewPage extends StatefulWidget {
   const VideoViewPage({Key ? key, required  this.path}) : super(key: key);
@@ -33,28 +35,14 @@ class _VideoViewPageState extends State<VideoViewPage> {
         actions: [
           IconButton(
               icon: Icon(
-                Icons.crop_rotate,
+                Icons.home,
                 size: 27,
               ),
-              onPressed: () {}),
-          IconButton(
-              icon: Icon(
-                Icons.emoji_emotions_outlined,
-                size: 27,
-              ),
-              onPressed: () {}),
-          IconButton(
-              icon: Icon(
-                Icons.title,
-                size: 27,
-              ),
-              onPressed: () {}),
-          IconButton(
-              icon: Icon(
-                Icons.edit,
-                size: 27,
-              ),
-              onPressed: () {}),
+              onPressed: () {
+                Navigator.push(
+                    context,MaterialPageRoute(builder: (context) => ProfileScreen()));
+
+              }),
         ],
       ),
       body: Container(
@@ -73,42 +61,48 @@ class _VideoViewPageState extends State<VideoViewPage> {
                   : Container(),
             ),
             Positioned(
-              bottom: 0,
-              child: Container(
-                color: Colors.black38,
-                width: MediaQuery.of(context).size.width,
-                padding: EdgeInsets.symmetric(vertical: 5, horizontal: 8),
-                child: TextFormField(
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 17,
+                bottom: 0,
+                child: Container(
+                  color: Colors.black38,
+                  width: MediaQuery.of(context).size.width,
+                  padding: EdgeInsets.symmetric(vertical: 5, horizontal: 8),
+                  child: Row(
+                      mainAxisSize: MainAxisSize.max,
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: [ElevatedButton(
+
+                    onPressed: () {
+                      GallerySaver.saveVideo(widget.path);
+
+                    },
+                    child: Icon( //<-- SEE HERE
+                      Icons.file_download,
+                      color: Colors.white,
+                      size: 30,
+                    ),
+                    style: ElevatedButton.styleFrom(
+                        shape: CircleBorder(), //<-- SEE HERE
+                        padding: EdgeInsets.all(20),
+                        backgroundColor: Colors.amberAccent
+                    ),
                   ),
-                  maxLines: 6,
-                  minLines: 1,
-                  decoration: InputDecoration(
-                      border: InputBorder.none,
-                      hintText: "Add Caption....",
-                      prefixIcon: Icon(
-                        Icons.add_photo_alternate,
+                    ElevatedButton(
+                      onPressed: () {
+                        Share.shareFiles([widget.path],text: ' ');
+                      },
+                      child: Icon( //<-- SEE HERE
+                        Icons.cloud_upload,
                         color: Colors.white,
-                        size: 27,
+                        size: 30,
                       ),
-                      hintStyle: TextStyle(
-                        color: Colors.white,
-                        fontSize: 17,
+                      style: ElevatedButton.styleFrom(
+                          shape: CircleBorder(), //<-- SEE HERE
+                          padding: EdgeInsets.all(20),
+                          backgroundColor: Colors.amberAccent
                       ),
-                      suffixIcon: CircleAvatar(
-                        radius: 27,
-                        backgroundColor: Colors.tealAccent[700],
-                        child: Icon(
-                          Icons.check,
-                          color: Colors.white,
-                          size: 27,
-                        ),
-                      )),
-                ),
-              ),
-            ),
+                    ),
+                  ]),
+                )),
             Align(
               alignment: Alignment.center,
               child: InkWell(
@@ -127,7 +121,7 @@ class _VideoViewPageState extends State<VideoViewPage> {
                         ? Icons.pause
                         : Icons.play_arrow,
                     color: Colors.white,
-                    size: 50,
+                    size: 30,
                   ),
                 ),
               ),

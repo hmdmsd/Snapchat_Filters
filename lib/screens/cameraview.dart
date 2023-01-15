@@ -1,9 +1,13 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
+import '/screens/profile.dart';
+import 'package:share_plus/share_plus.dart';//plugin responsible for sharing photos
+import 'package:gallery_saver/gallery_saver.dart'; //plugin resposible for saving photos
 
 class CameraViewPage extends StatelessWidget {
   const CameraViewPage({Key ? key, required this.path}) : super(key: key);
   final String path;
+  //class tha takes file path ( image or video) to showw it on screen
 
   @override
   Widget build(BuildContext context) {
@@ -14,28 +18,14 @@ class CameraViewPage extends StatelessWidget {
         actions: [
           IconButton(
               icon: Icon(
-                Icons.crop_rotate,
+                Icons.home,
                 size: 27,
               ),
-              onPressed: () {}),
-          IconButton(
-              icon: Icon(
-                Icons.emoji_emotions_outlined,
-                size: 27,
-              ),
-              onPressed: () {}),
-          IconButton(
-              icon: Icon(
-                Icons.title,
-                size: 27,
-              ),
-              onPressed: () {}),
-          IconButton(
-              icon: Icon(
-                Icons.edit,
-                size: 27,
-              ),
-              onPressed: () {}),
+              onPressed: () {
+                Navigator.push(
+                    context,MaterialPageRoute(builder: (context) => ProfileScreen()));
+
+              }),
         ],
       ),
       body: Container(
@@ -54,40 +44,49 @@ class CameraViewPage extends StatelessWidget {
             Positioned(
               bottom: 0,
               child: Container(
+
                 color: Colors.black38,
                 width: MediaQuery.of(context).size.width,
                 padding: EdgeInsets.symmetric(vertical: 5, horizontal: 8),
-                child: TextFormField(
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 17,
-                  ),
-                  maxLines: 6,
-                  minLines: 1,
-                  decoration: InputDecoration(
-                      border: InputBorder.none,
-                      hintText: "Add Caption....",
-                      prefixIcon: Icon(
-                        Icons.add_photo_alternate,
-                        color: Colors.white,
-                        size: 27,
-                      ),
-                      hintStyle: TextStyle(
-                        color: Colors.white,
-                        fontSize: 17,
-                      ),
-                      suffixIcon: CircleAvatar(
-                        radius: 27,
-                        backgroundColor: Colors.tealAccent[700],
-                        child: Icon(
-                          Icons.check,
-                          color: Colors.white,
-                          size: 27,
-                        ),
-                      )),
+                child: Row(
+                    mainAxisSize: MainAxisSize.max,
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [ElevatedButton(
+
+                    onPressed: () {
+                      GallerySaver.saveImage(path);
+                      //download edited photo to gallery
+
+                    },
+                child: Icon( //<-- SEE HERE
+                  Icons.file_download,
+                  color: Colors.white,
+                  size: 30,
+                ),
+                style: ElevatedButton.styleFrom(
+                  shape: CircleBorder(), //<-- SEE HERE
+                  padding: EdgeInsets.all(20),
+                    backgroundColor: Colors.amberAccent
                 ),
               ),
-            ),
+                  ElevatedButton(
+                    onPressed: () {
+                      //share photo on social media or drive
+                      Share.shareFiles([path],text: ' ');
+                    },
+                    child: Icon( //<-- SEE HERE
+                      Icons.cloud_upload,
+                      color: Colors.white,
+                      size: 30,
+                    ),
+                    style: ElevatedButton.styleFrom(
+                      shape: CircleBorder(), //<-- SEE HERE
+                      padding: EdgeInsets.all(20),
+                        backgroundColor: Colors.amberAccent
+                    ),
+                  ),
+              ]),
+            )),
           ],
         ),
       ),

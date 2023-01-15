@@ -52,7 +52,8 @@ dependencies:
    # git:
      # url: https://github.com/Hassen-Elmahrouk/stories_editor
     #  ref: main
-  image_editor_plus: ^0.1.8
+  animagie_image_editor: ^0.0.1
+  gallery_saver: ^2.3.2
   #------------------
 
 dev_dependencies:
@@ -70,7 +71,7 @@ dev_dependencies:
 flutter_icons:
   android: "launcher_icon"
   ios: true
-  image_path: "assets/sc.jpg"
+  image_path: "/assets/sc.jpg"
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
