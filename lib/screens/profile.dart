@@ -72,14 +72,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
               //select image from gallery
               InfoCard(text: "Uplaod image", icon: Icons.photo_library, onPressed: () async {
                 final ima = await ImagePicker().pickImage(source: ImageSource.gallery);
-                if(ima!=null){
-                  //if nothing is selected stay on yhe same page
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                      builder: (context) => ProfileScreen()));
-                }
-                else{
                   //go to Image editor
 
                 var editedImage = await Navigator.push(
@@ -104,7 +96,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   setState(() {});
 
                 }
-              }}),
+              }),
               //logout button
               ElevatedButton(
                 child: Text("Logout"),
