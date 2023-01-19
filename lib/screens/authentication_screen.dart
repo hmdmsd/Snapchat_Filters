@@ -1,3 +1,4 @@
+//the first page that appears to the user 
 import 'package:flutter/material.dart';
 import 'login_screen.dart';
 import 'signup_screen.dart';
