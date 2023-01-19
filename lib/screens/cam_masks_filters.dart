@@ -1,3 +1,4 @@
+//the page where the user can open the camera and choose a filter
 import 'dart:io';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
