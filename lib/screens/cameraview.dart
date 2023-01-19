@@ -1,3 +1,4 @@
+//the final page where the user can view the edited photo
 import 'dart:io';
 import 'package:flutter/material.dart';
 import '/screens/profile.dart';
